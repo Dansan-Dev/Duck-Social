@@ -28,10 +28,14 @@ export function SignupForm() {
 
 
             // Posting
-            await postProfile(data.name)
+            const profile: {id: string, name: string} = await postProfile(data.name)
 
             // Navigate to dashboard or login
-            await navigate({to: '/login'})
+            await navigate({
+                from: '/signup',
+                search: profile,
+                to: '/login'
+            })
         } catch (err) {
             console.error('Signup failed:', err)
         }
