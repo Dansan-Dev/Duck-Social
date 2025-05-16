@@ -7,11 +7,12 @@ import { routeTree } from './routeTree.gen'
 
 import './styles.css'
 import reportWebVitals from './reportWebVitals.ts'
+import {useAuth} from "@/hooks/useAuth.ts";
 
 // Create a new router instance
 const router = createRouter({
   routeTree,
-  context: {},
+  context: {authentication: useAuth()},
   defaultPreload: 'intent',
   scrollRestoration: true,
   defaultStructuralSharing: true,
@@ -31,7 +32,7 @@ if (rootElement && !rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement)
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} context={{authentication: useAuth()}}/>
     </StrictMode>,
   )
 }
