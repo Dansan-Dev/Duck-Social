@@ -1,6 +1,6 @@
-export async function fetchProfile(setName: any) {
+export async function fetchProfile(setName: any, id: string) {
     try {
-        const resp = await fetch('http://localhost:8080/api/1')
+        const resp = await fetch('http://localhost:8080/api/' + id)
         const data = await resp.json()
         setName(data.name)
     } catch (error) {

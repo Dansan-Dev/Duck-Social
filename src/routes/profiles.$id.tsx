@@ -1,27 +1,23 @@
-import { createFileRoute } from '@tanstack/react-router'
+import {createFileRoute} from '@tanstack/react-router'
 import {useEffect, useState} from "react";
 import {fetchProfile} from "../utils/fetching.ts"
 
 export const Route = createFileRoute('/profiles/$id')({
-  component: RouteComponent,
+    component: RouteComponent,
 })
 
 function RouteComponent() {
-  const [name, setName] = useState('')
+    const [name, setName] = useState('')
+    const {id} = Route.useParams()
 
-  useEffect(() => {
-    fetchProfile(setName).then()
-  }, [])
-
-  const { id } = Route.useParams()
-  return (
-      <div>
-        <p>
-          Hello "/profiles/{id}"!
-        </p>
-        <p>
-          Welcome {name}!
-        </p>
-      </div>
-  )
+    useEffect(() => {
+        fetchProfile(setName, id).then()
+    }, [])
+    return (
+        <div>
+            <p>
+                Welcome {name}!
+            </p>
+        </div>
+    )
 }
