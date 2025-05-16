@@ -3,10 +3,10 @@ import '../App.css'
 import {useEffect, useState} from "react";
 
 export const Route = createFileRoute('/')({
-    component: App,
+    component: Home,
 })
 
-function App() {
+function Home() {
     const [name, setName] = useState('')
 
     async function fetchProfile() {
